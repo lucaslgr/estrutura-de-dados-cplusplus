@@ -1,4 +1,5 @@
 /*
+    Exercício:
     3. Faça um programa para ler um arquivo de
     entrada que contem as coordenadas X,Y e Z de um
     conjuntos de pontos.
