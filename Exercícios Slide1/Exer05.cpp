@@ -38,13 +38,20 @@ int main()
 
     //Programa 3
     cout << "\n\nSaida programa 3:";
-    int mat3[] = {4, 5, 6}; //Declaracao e atribuição de um vetor
-    // int mat3[] = {4, 5, 6, 7}; //Declaracao e atribuição de um vetor // DÚVIDA 2 AQUI
+    // int mat3[] = {5, 10, 15}; //Declaracao e atribuição de um vetor
+    int mat3[] = {5, 10, 15, 20}; //Declaracao e atribuição de um vetor // TESTE
     int *p = mat3; //Declaracao e atribuição de um ponteiro do tipo inteiro que apontará para a primeira posicao do vetor mat3
     for (int j = 0; j < 3; j++)
     {
-        // cout << " \n" << *p++;
-        cout << " \n" << ++*p; // DÚVIDA 2 AQUI
+        cout << " \n"
+             << *p++; // = *(p++) Incrementa no endereço após imprimir (Saída: 5, 10, 15)
+
+        // cout << " \n"
+        //      << *++p; // = *(++p) Incrmenta no endereço antes de imprimir (Saída: 10, 15, 20)
+
+        // cout << " \n"
+        //      << ++*p; // = ++(*p) Incrementa no valor antes de imprimir (Saída: 6, 7, 8) [Note que ele aponta apenas para o primeiro endereço durante todo o loop]
+        
     }
     /*
 
@@ -78,15 +85,19 @@ int main()
             Na linha A, eu faço um outro incremento dentro do loop e ele aponta para o primeiro valor novamente
         
     */
-    cout << "\n\nSaida programa 3(COM DUVIDA):";
-    int mat4[] = {4, 5, 6, 7}; //Declaracao e atribuição de um vetor
+    cout << "\n\nSaida programa 3(TESTE, incremento separado):";
+    int mat4[] = {5, 10, 15, 20, 25}; //Declaracao e atribuição de um vetor
     int *p_vet = mat4;             //Declaracao e atribuição de um ponteiro do tipo inteiro que apontará para a primeira posicao do vetor mat3
     for (int j = 0; j < 3; j++)
     {
         cout << " \n"
-             << (*p_vet)++;
+             << *p_vet++; // = *(p_vet++) Incrementa no endereço após imprimir o valor (Saída: 5, 10, 15)
+
         if (j == 2)
-            cout << "\nUltimo valor: " << *(p_vet + 1) << endl; //LINHA A
+        {
+            // cout << "\nImprime valor atual: "<< *(p_vet) << endl; //Sem essa linha ele pulará um valor devido ao incremento ser realizado 2 vezes
+            cout << "\nUltimo valor: " << *(p_vet + 1) << endl; //TESTE
+        }
     }
 
     return 0;
