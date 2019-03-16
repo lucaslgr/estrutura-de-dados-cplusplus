@@ -10,7 +10,6 @@ using namespace std;
 int main()
 {
 
-    
     int *p;
     int x = 5;
     p = &x;
