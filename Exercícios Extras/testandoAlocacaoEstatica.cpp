@@ -15,7 +15,7 @@ using namespace std;
 
 float *somaVetores(float u[], float v[])
 {
-    //alocado de forma estatica
+    //Alocado de forma estatica
     float r[3];
 
     r[0] = u[0] + v[0];
