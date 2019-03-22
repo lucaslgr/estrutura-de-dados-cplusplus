@@ -1,6 +1,6 @@
 /*
     -Objetivo:
-    -> Calcular o fatorial de um numero
+    -> Calcular o fatorial de um numero (DA MANEIRA MAIS FÁCIL POSSÍVEL)
     -> Usando recursividade
 */
 
@@ -10,13 +10,11 @@ using namespace std;
 
 void calc_Fatorial(float *num, float *fat)
 {
-    if (*num == 0 && *fat == 0)
+    if ( (*num == 0 || *num == 1) && (*fat == 0) )
         *fat = 1;
-    else if (*num == 1 && *fat == 0)
-        *fat = 1;
+        
     else if(*num > 1) //Aplicando recursividade aqui
     {
-        cout << *fat << endl;
         if(*fat == 0)
             *fat = (*num) * (--(*num));
         else
@@ -28,11 +26,15 @@ void calc_Fatorial(float *num, float *fat)
 
 int main()
 {
-    float valor = 8;
     float fat = 0;
+    float valor;
+
+    cout << "Informe um numero e pressione ENTER: " << endl;
+    cin >> valor;
+    int aux = valor;
 
     calc_Fatorial(&valor, &fat);
-    cout << "O fatorial de 8 eh: " << fat << endl;
+    cout << "O fatorial de " << aux << " eh: " << fat << endl;
 
     return 0;
 }
