@@ -113,7 +113,7 @@ void Aluno::leFrequencia()
 
 float Aluno::taxa_Frequencia()
 {
-    int cont_Presenca, taxa_Presenca;
+    float cont_Presenca = 0,taxa_Presenca;
 
     for (int i = 0; i < (sizeof(this->notas) / sizeof(this->notas[0])); i++)
     {
@@ -121,7 +121,7 @@ float Aluno::taxa_Frequencia()
             cont_Presenca += 1;
     }
 
-    taxa_Presenca = (cont_Presenca / NUM) * 100;
+    taxa_Presenca = ((cont_Presenca / 7) * 100);
 
     return taxa_Presenca;
 }
@@ -134,7 +134,7 @@ void Aluno::aluno_Status()
             cout << "Aluno aprovado\n";
         else
         {    
-            cout << "Taxa de frequencia de " << this->nome << " eh: " << Aluno::taxa_Frequencia() << endl;
+            cout << "Taxa de frequencia de " << this->nome << " eh: " << Aluno::taxa_Frequencia() <<"%"<< endl;
             cout << "Aluno reprovado por falta!\n";
         }
     }
@@ -148,7 +148,7 @@ void Aluno::aluno_Status()
         else
         {
             cout << "Media de " << this->nome << " eh: " << Aluno::retorna_Media() << endl;
-            cout << "Taxa de frequencia de " << this->nome << " eh: " << Aluno::taxa_Frequencia() << endl;
+            cout << "Taxa de frequencia de " << this->nome << " eh: " << Aluno::taxa_Frequencia() << "%" << endl;
             cout << "Aluno reprovado por nota e por frequencia!" << endl;
         }
     }

@@ -10,8 +10,9 @@ int main()
     a1.leNotas();
     a1.calculaMedia();
     a1.leFrequencia();
-    //a1.print_dadosAluno();
     a1.aluno_Status();
+
+    a1.print_dadosAluno();
 
     system("pause");
     return 0;
