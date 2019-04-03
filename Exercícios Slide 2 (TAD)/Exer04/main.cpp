@@ -1,18 +1,19 @@
-#include <locale.h>
 #include <iostream>
-#include "Prova.h"
-#define N 3
+#include "Aluno.h"
 
 using namespace std;
 
 int main()
 {
-    //setlocale(LC_ALL, "Portuguese");
+    Aluno a1(22, "Lucas", "20143131312");
 
-    Prova p1(N);
+    a1.leNotas();
+    a1.calculaMedia();
+    a1.leFrequencia();
+    a1.aluno_Status();
 
-    p1.leNotas();
-    cout << "A nota final de p1 eh: " << p1.obtemNotaFinal() << endl;
+    a1.print_dadosAluno();
 
+    system("pause");
     return 0;
 }

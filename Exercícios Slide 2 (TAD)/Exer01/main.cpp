@@ -23,7 +23,7 @@ void printaMenu(int *ans)
     cout << "2 -  subtracao\n";
     cout << "3 -  divisao\n";
     cout << "4 -  multiplicacao\n";
-
+    cout << "Digite a sua o número da sua opcao e pressione ENTER\n";
     cin >> *ans;
 }
 
