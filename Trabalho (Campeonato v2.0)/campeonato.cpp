@@ -12,7 +12,7 @@ campeonato::campeonato(int numTimes)
 
 campeonato::~campeonato()
 {
-    delete this->times;
+    delete [] this->times;
     cout << "\nO campeonato foi destruido" << endl;
 }
 
@@ -26,16 +26,25 @@ void campeonato::cadastraTimes()
 {
     system("cls");
 
-    cout << "Informe o numero de times que participarao do campeonato" << endl;
+    cout << "*********************************************************" << endl;
+    cout << "BEM-VINDO AO SISTEMA AUTOMÁTICO DE TABELAS DE CAMPEONATOS" << endl;
+    cout << "*********************************************************" << endl;
+
+    cout << "\nInforme o numero de times que participarao do campeonato" << endl;
     cin >> this->numTimes;
     this->times = new team[this->numTimes];
 
+    //Limpando o buffer de leitura para utilização do getline
+    cin.clear();
+    cin.ignore(100, '\n');
+
+    //Leitura dos nomes de N times
     for (int i = 0; i < this->numTimes; i++)
     {
         system("cls");
         string nome_Time;
         cout << "Informe o nome do " <<  i+1 << " time: " << endl;
-        cin >> nome_Time;
+        getline(cin, nome_Time);
 
         this->times[i] = team(nome_Time);
     }
@@ -43,10 +52,12 @@ void campeonato::cadastraTimes()
 
 void campeonato::geraPartidas()
 {
+    //FILTRO DE CASO
     if (this->numTimes == 0)
         cout << "Erro: E necessario cadastrar os times primeiro" << endl;
     else
     {
+        //Todos contra todos SEM REPETIÇÃO
         for(int i = 0; i < this->numTimes; i++)
         {
             for (int j = (i + 1); j < this->numTimes; j++)

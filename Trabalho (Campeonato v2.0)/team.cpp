@@ -28,16 +28,26 @@ void team::jogar(team *adversario)
     int gols1 = this->geraGols();
     int gols2 = adversario->geraGols();
 
-    if (gols1 > gols2)
-        this->pontuacao += 3;
+    cout << endl << this->nome << " jogando contra " << adversario->nome << endl;
 
+    if (gols1 > gols2)
+    {
+        //Time 1 ganhou
+        cout << "Vitoria do: " << this->nome << endl;
+        this->pontuacao += 3;
+    }
     else if (gols1 == gols2) //empate
     {
+        //Time 2 ganhou
+        cout << "Vitoria do: " << adversario->nome << endl;
         this->pontuacao += 1;
         adversario->atualizaPontos(1);
     }
     else
+    {
+        cout << "Partida empatada!" << endl;
         adversario->atualizaPontos(3);
+    }
 }
 
 void team::atualizaNTitulos()
@@ -67,7 +77,7 @@ int team::getPontuacao()
 int team::geraGols()
 {
     int gol = 0;
-    srand((unsigned int)time(NULL));
+    srand((unsigned)time(NULL));
     gol = rand() % 100;
 
     return gol;

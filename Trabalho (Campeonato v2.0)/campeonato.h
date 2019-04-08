@@ -13,7 +13,7 @@ class campeonato
     public:
         campeonato();
         campeonato(int numTimes);
-        ~campeonato();
+        virtual ~campeonato();
 
         //Cadastra todos os times no campeonato
         void cadastraTimes();
