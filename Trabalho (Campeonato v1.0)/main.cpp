@@ -13,9 +13,7 @@ int main()
     cout << "Informe o numero de teams do campeonato" << endl;
     cin >> numteams;
 
-    campeonato *p_interperiodo;
-    campeonato interperiodo(numteams);
-    p_interperiodo = &interperiodo;
+    campeonato *p_interperiodo = new campeonato(numteams);
 
     team *p_teams = new team[numteams];
     p_interperiodo->teams = p_teams;
