@@ -1,4 +1,6 @@
+#pragma once
 #include <iostream>
+#include <math.h>
 
 using namespace std;
 
@@ -15,5 +17,6 @@ class ponto
         int get_X();
         int get_Y();
         void set_X(int x);
-        void set_Y(int y);       
-}
+        void set_Y(int y);
+        float distancia (ponto *op);
+};

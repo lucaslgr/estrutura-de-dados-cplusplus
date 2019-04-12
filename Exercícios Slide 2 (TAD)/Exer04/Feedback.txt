@@ -1,4 +1,0 @@
-Erros cometidos:
-    1 - Ao calcular a porcentagem da frequencia, utilizei um contador INTEIRO, logo, ao realizar a divisão do contador pelo
-    numero de dias de aula, o retorno da operação de divisão já era TRUNCADO, independente da minha variavel de destino ser
-    float, logo, a porcentagem não era printada.
