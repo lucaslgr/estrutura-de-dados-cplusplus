@@ -3,7 +3,8 @@
 .Exercícios Extras/teste.exe
 .Exercícios Slide1/teste.exe
 .ini
-.rar
+*.rar
+
 
 # Prerequisites
 .d
