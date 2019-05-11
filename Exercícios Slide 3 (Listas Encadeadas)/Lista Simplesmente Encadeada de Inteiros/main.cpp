@@ -14,12 +14,20 @@ int main()
     l1.insereFinal(60);
 
     l1.imprime();
+    
+    l1.removeInicio(); //Ta com erro
 
-    //l1.removeInicio(); //Ta com erro
+    l1.imprime();
 
-    //l1.removeFinal(); //OK
+    l1.removeFinal();
+
+    l1.imprime();
 
     l1.removePorValor(40);
+    
+    l1.imprime();
+
+    l1.removePorValor(20);
 
     l1.imprime();
 

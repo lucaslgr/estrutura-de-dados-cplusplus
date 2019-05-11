@@ -20,22 +20,27 @@ Lista::~Lista()
 
 void Lista::insereInicio(int val)
 {
-    if(this->primeiro == NULL)
-    {
-        this->primeiro = new No(val);
-        this->primeiro->setProx(NULL);
-    }
-    else
-    {
-        //TAMBÉM FUNCIONA
-        // No *p = new No(val);
-        // p->setProx(this->primeiro);
-        // this->primeiro = p;
+    // if(this->primeiro == NULL)
+    // {
+    //     this->primeiro = new No(val);
+    //     this->primeiro->setProx(NULL);
+    // }
+    // else
+    // {
+    //     //TAMBÉM FUNCIONA
+    //     // No *p = new No(val);
+    //     // p->setProx(this->primeiro);
+    //     // this->primeiro = p;
         
-        No *p = this->primeiro;
-        this->primeiro = new No(val);
-        this->primeiro->setProx(p);
-    }    
+    //     No *p = this->primeiro;
+    //     this->primeiro = new No(val);
+    //     this->primeiro->setProx(p);
+    // }
+
+    No *p = new No(); // cria No apontado por p
+    p->setInfo(val);
+    p->setProx(primeiro);
+    primeiro = p;
 }
 
 void Lista::insereFinal(int val)
@@ -66,11 +71,9 @@ void Lista::removeInicio()
     else
     {
         No *p = this->primeiro;
-        No *p_prox = this->primeiro->getProx();
         
-        // delete this->primeiro;
-        // this->primeiro = p_prox;
-        this->primeiro = this->primeiro->getProx();
+        this->primeiro = p->getProx();
+        
         delete p;
     }
 }
@@ -103,33 +106,35 @@ void Lista::removeFinal()
 
 bool Lista::removePorValor(int val)
 {
+    No *p, *q; //q é o ultimo
     if (this->primeiro == NULL)
-        cout << "Lista vazia!";
+        cout << "\nLista vazia!!" << endl;
     else
     {
-        No *p = this->primeiro;
-
-        while(p->getProx() != NULL)
+        p = this->primeiro;
+        if (p->getInfo() == val) //Se estiver no primeiro cai aqui
         {
-            No *p_anterior = p;
-
-            cout << "Passou aqui no while" << endl;
-            if (p->getProx()->getInfo() == val)
-            {
-                cout << "Passou aqui, encontrou val" << endl; 
-                //Fecho o laço, pulando o que eu quero deletar
-                p->setProx(p->getProx()->getProx());
-
-                //deleto o do meio
-                delete p->getProx();
-                return true;
-                break;
-            }
-            p = p->getProx();
+            this->primeiro = p->getProx();
+            delete p;
+            return true;
         }
 
-        return false; //Se não entrar no if e retornar true, passará aqui
+        while (p->getProx() != NULL)
+        {
+            if (p->getProx()->getInfo() == val)
+            {
+                q = p->getProx(); //O que será deletado
+
+                p->setProx(q->getProx()); // Emendando a lista
+
+                delete q;
+
+                return true;
+            }
+            p = p->getProx(); //Faz o while rodar      
+        }
     }
+    return false; //Se não retornar true em nenhum dos if's acima
 }
 
 void Lista::imprime()
@@ -137,13 +142,13 @@ void Lista::imprime()
     // system("cls");
 
     if (this->primeiro == NULL)
-        cout << "Lista vazia!!!" << endl;
+        cout << "\nLista vazia!!!" << endl;
     else
     {
         cout << "\n************************************ IMPRIMINDO A LISTA ************************************" << endl;
         No *p = this->primeiro;
 
-        while(p != NULL)
+        while (p != NULL) // Corrigido, anteriormente estava while(p->getProx() != NULL), logo ia só até o penultimo
         {
             cout << p->getInfo() << " ";
             p = p->getProx();

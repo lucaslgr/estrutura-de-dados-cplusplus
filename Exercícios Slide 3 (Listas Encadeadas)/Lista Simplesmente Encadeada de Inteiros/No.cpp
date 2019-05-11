@@ -14,7 +14,7 @@ No::No(int val)
 
 No::~No()
 {
-    delete this->prox;
+    //delete this->prox; //Provoca um erro nas funções remove do início e do final em Lista.cpp
 }
 
 //GET'S

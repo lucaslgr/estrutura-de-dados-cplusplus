@@ -16,7 +16,7 @@ class Lista
         void insereInicio(int val); //PASS
         void insereFinal(int val);//PASS
 
-        void removeInicio(); //Dúvida aqui (Loop infinito)
+        void removeInicio(); //PSS //CORRIGIDO O ERRO, estav no destrutor do nó
         void removeFinal(); //PASS
         bool removePorValor(int val); 
 
