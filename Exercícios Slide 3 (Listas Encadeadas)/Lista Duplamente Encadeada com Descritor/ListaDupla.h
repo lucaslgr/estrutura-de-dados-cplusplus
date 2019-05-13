@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include "NoDuplo.h"
 
@@ -15,10 +16,11 @@ class ListaDupla
     ~ListaDupla(); //PASS
     bool busca(int val);
     void insereInicio(int val); //PASS
-    void eliminaInicio();
+    void removeInicio();
 
     void insereFinal(int val); //PASS
     void removeFinal();
     void imprimeReverso();
+    void imprimeDireto();
 
 };

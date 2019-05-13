@@ -2,7 +2,10 @@
 .vscode/*
 .Exercícios Extras/teste.exe
 .Exercícios Slide1/teste.exe
-.ini
+*.ini
+*.rar
+*.vscode
+*.exe
 *.rar
 
 

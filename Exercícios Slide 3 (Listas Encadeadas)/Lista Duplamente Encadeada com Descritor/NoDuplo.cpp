@@ -16,8 +16,8 @@ NoDuplo::NoDuplo(int val)
 
 NoDuplo::~NoDuplo()
 {
-    delete ant;
-    delete prox;
+    //delete ant;
+    //delete prox;
 }
 
 void NoDuplo::setAnt(NoDuplo *p)
