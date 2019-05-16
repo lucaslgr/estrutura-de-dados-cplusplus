@@ -20,10 +20,10 @@ class Lista
 
         void removeInicio(); //OK PASS
         void removeFinal();  //OK PASS
-        void removePosK(int k);
+        void removePosK(int k); //OK PASS
 
         //Busca determinado valor na lista retorna true or false se o valor está contido na lista
-        bool busca(int val);
+        bool busca(int val); //OK PASS
 
         //Imprime a lista do inicio ao fim
         void imprimeLista(); //OK PASS

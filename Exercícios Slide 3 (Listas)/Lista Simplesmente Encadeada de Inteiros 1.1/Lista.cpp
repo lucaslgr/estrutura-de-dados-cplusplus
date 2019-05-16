@@ -141,6 +141,66 @@ void Lista::removeFinal()
     }
 }
 
+void Lista::removePosK(int k)
+{
+    //Pegando o tamanho da lista atual
+    int n = this->getTamLista();
+
+    if (k < 0 || k > (n-1))
+    {
+        cout << "A posicao k é inválida!!!" << endl;
+        exit(0);
+    }
+    //Se for inserir na primeira posicao
+    else if (k == 0)
+    {
+        this->removeInicio();
+    }
+    //Se for a ultima posicao mais 1, insere também conectando a lista
+    else if (k == (n - 1))
+    {
+        this->removeFinal();
+    }
+    else
+    {
+        int contadorPosicao = 1;
+        No *p = this->primeiro;
+        No *q = this->primeiro;
+
+        while (p->getProx() != NULL)
+        {
+            if (contadorPosicao == k)
+            {
+                q = p;
+                No *no_Del = p->getProx();
+                // cout << "Info no_del:" << no_Del->getInfo() << endl; //pegando certo
+                q->setProx(no_Del->getProx());
+                delete no_Del;
+
+                break;
+            }
+            q = p;
+            p = p->getProx();
+            contadorPosicao += 1;
+        }        
+    }
+}
+
+bool Lista::busca(int val)
+{
+    No *p = this->primeiro;
+    while (p != NULL)
+    {
+        if (p->getInfo() == val)
+        {
+            return true;
+        }
+        p = p->getProx();
+    }
+
+    return false; //Se não entrar na saída true, entra aqui
+}
+
 void Lista::imprimeLista()
 {
     if (this->primeiro == NULL)

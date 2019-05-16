@@ -31,12 +31,20 @@ int main()
     l1->imprimeLista();
 
     l1->removeInicio();
-    l1->removeInicio();
-    l1->removeInicio();
     l1->imprimeLista();
 
-    l1->removeFinal();
-    l1->removeFinal();
+    //l1->removeFinal();
     l1->imprimeLista();
+    
+
+    l1->removePosK(4);
+    l1->imprimeLista();
+
+    cout << endl << endl;
+    if (l1->busca(7))
+        cout << "\nA lista contem o numero" << endl;
+    else
+        cout << "\nA lista nao contem esse numero" << endl;
+
     return 0;
 }
