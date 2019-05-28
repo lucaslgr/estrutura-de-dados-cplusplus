@@ -12,9 +12,9 @@ ListaEncad::~ListaEncad()
 
     while (p->getProx() != NULL)
     {
-        q = p;
-        p = p->getProx();
-        delete q;
+        q = p->getProx();
+        delete p;
+        p = q;
     }
     delete p;
     cout << "\nA lista foi deletada!\n";
