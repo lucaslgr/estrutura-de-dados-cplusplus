@@ -58,6 +58,35 @@ void ListaDuplaEncad::removeFinal()
     }
 }
 
+void ListaDuplaEncad::removeNoCentral()
+{
+    if ((this->n % 2) != 0) //Se for ímpar
+    {
+        int posCentral = (this->n/2);
+        cout << "Posicao central: " << posCentral << endl; //Teste
+        
+        int cont = 0;
+        NoDuplo *p = this->primeiro;
+        NoDuplo *q;
+        while (p != NULL)
+        {
+            if (cont == posCentral)
+            {
+                q->setProx(p->getProx());
+                p->getProx()->setAnt(q);
+                delete p;
+                this->n -= 1;
+                return;
+            }
+            cont += 1;
+            q = p;
+            p = p->getProx();
+        }
+    }
+    else
+        cout << "A lista nao eh impar!!!\n";
+}
+
 void ListaDuplaEncad::imprime()
 {
     NoDuplo *p = this->primeiro;

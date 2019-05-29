@@ -15,6 +15,8 @@ int main()
     l1->insereFinal(05);
     l1->imprime();
 
+
+    l1->removeNoCentral();
     // l1->removeFinal();
     // l1->removeFinal();
 
