@@ -30,5 +30,8 @@ int main()
 
     l1->prencheLista();
     l1->imprime();
+    l1->excluiNosPorValor(2);
+    // l1->removePorValor(2);
+    l1->imprime();
     return 0;
 }

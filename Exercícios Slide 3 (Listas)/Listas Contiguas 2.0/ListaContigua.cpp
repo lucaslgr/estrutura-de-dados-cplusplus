@@ -142,7 +142,8 @@ void ListaContigua::removePosK(int k)
     }
     else if( k>=0 && k<=n) //Testa se K é válido
     {
-        for (int i = k; i <= n; i++)
+        int tam = n;
+        for (int i = k; i <= tam; i++)
         {
             this->x[i] = this->x[i+1];
         }
@@ -208,4 +209,69 @@ void ListaContigua::calcSomaEImprime()
         sum += this->x[i];
     }
     cout << "A soma dos elementos da lista eh: " << sum << endl;
+}
+
+void ListaContigua::removePorValor(int x)
+{
+    if (this->n == 0)
+    {
+        cout << "Lista esta vazia!!" << endl;
+        return;
+    }
+    else
+    {
+        int tam = n;
+        if (this->x[f] == x)
+        {
+            this->removeFinal();
+        }
+        else
+        {
+            for (int i = 0; i <= tam; i++)
+            {
+                if (this->x[i] == x)
+                {
+                    for (int j = this->f; j >= i; j--)
+                    {
+                        this->x[j-1] = this->x[j];
+                    }
+                    this->f -= 1;
+                    this->n -= 1;
+                    return;
+                }
+            }
+        }
+    }
+}
+
+void ListaContigua::excluiNosPorValor(int x)
+{
+    int *vetPos = new int[this->n];
+
+    if (this->n == 0)
+    {
+        cout << "Lista esta vazia!!" << endl;
+        return;
+    }
+    else
+    {
+        int tam = n; //Precisa pegar antes o valor de "n" pois enquanto vai excluindo ele vai diminuindo de 1 em 1, logo o loop for da erro de semântica
+        int cont = 0; //Conta o numero de incidencias do valor que se deseja excluir os elementos
+        for (int i = 0; i < tam; i++)
+        {
+            //Loop para pegar todas posicoes que tem os valores
+            if (this->x[i] == x)
+            {
+                cont += 1;
+            }
+        }
+
+        //Loop para remover todas todas incidencias que contem o valor desejado na lista
+        for (int i = 0; i < cont; i++)
+        {
+            // cout << vetPos[i] << " " ;
+            this->removePorValor(x);
+        }
+        
+    }
 }

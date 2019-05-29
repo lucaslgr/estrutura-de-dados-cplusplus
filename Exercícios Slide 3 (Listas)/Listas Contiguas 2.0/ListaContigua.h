@@ -29,5 +29,11 @@ class ListaContigua
         //Calcula e imprime a soma de todos elementos da lista
         void calcSomaEImprime();
 
+        //Dado um valor inteiro X, exclui da lista a primeira ocorrencia que o valor seja igual a X
+        void removePorValor(int x);
+
+        //Dado um valor inteiro X, exclui da lista todos os nós cujo o valor seja igual a X (Exer.4 da pag 65 do slide 3)
+        void excluiNosPorValor(int x);
+
         int getTam();               //OK PASS
 };
