@@ -35,4 +35,7 @@ public:
 
     //ATRIBUI NOVO NO COMO FILHO DIREITO
     void setDir(No *no);
+
+    //ATRIBUI ID NO NO
+    void setId(int id);
 };

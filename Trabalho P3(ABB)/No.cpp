@@ -43,3 +43,9 @@ void No::setDir(No *no)
 {
     this->dir = no;
 }
+
+//ATRIBUI ID NO NÓ
+void No::setId(int id)
+{
+    this->id = id;
+}

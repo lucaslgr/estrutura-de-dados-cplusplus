@@ -1,33 +1,60 @@
 #include "Arvore.h"
-#define LIMITE_RAND 100
+#define LIMITE_RAND 100 //Constante definida para limitar a faixa de numeros randomicos
 
 //CONSTRUTOR
 Arvore::Arvore()
 {
-    raiz = NULL;
+    this->raiz = NULL;
+    this->lista_controleChaves = new ListaInteiro();
+    this->lista_controleNomes = new ListaString();
 }
 
-//INSERE NOVO NO
+//INSERE CLIENTE POR NOME
 void Arvore::inserir(string nome)
 {
     //SE PRIMEIRO NO
-    if (raiz == NULL)
+    if (this->raiz == NULL)
     {
         //Gerando a chave aleatoriamente
         srand((unsigned)time(0));
-        int aux = rand() % LIMITE_RAND;
+        int chaveRandon = rand() % LIMITE_RAND;        
 
-        raiz = new No(aux, nome);
-        cout << nome << " foi inserido com sucesso!\n\n" << endl;
+        raiz = new No(chaveRandon, nome);
+
+        //Atualizando listas de controle
+        this->lista_controleChaves->insereInicio(chaveRandon); //Inserindo as chaves
+        this->lista_controleNomes->insereInicio(nome); //Inserindo os nomes
+
+        cout << endl << nome << " foi inserido com sucesso!\n\n" << endl;
     }
     //SENÃO
     else
     {
-        //Gerando a chave aleatoriamente
-        srand((unsigned)time(0));
-        int aux = rand() % LIMITE_RAND;
+        int chaveRandon = 0;
 
-        inserirAux(this->raiz, aux, nome);
+        while (this->lista_controleNomes->busca(nome))
+        {
+            cout << "\nO nome informado ja existe!!\n";
+            cout << "Por favor informe outro nome: ";
+            cin >> nome;
+        }
+
+        srand((unsigned)time(0));
+        chaveRandon = rand() % LIMITE_RAND;
+
+        //Loop para verificar/gerar uma chave SEM REPETÊNCIA
+        while (this->lista_controleChaves->busca(chaveRandon))
+        {
+            //Gerando a chave aleatoriamente
+            srand((unsigned)time(0));
+            chaveRandon = rand() % LIMITE_RAND;
+        }
+
+        inserirAux(this->raiz, chaveRandon, nome);
+        
+        //Atualizando listas de controle
+        this->lista_controleChaves->insereInicio(chaveRandon); //Inserindo as chaves
+        this->lista_controleNomes->insereInicio(nome);         //Inserindo os nomes
         cout << nome << " foi inserido com sucesso!\n\n" << endl;
     }
 }
@@ -97,7 +124,7 @@ void Arvore::buscaPorId(No *no, int chave)
         {
             if (chave > no->getId())
             {
-                if (no->getEsq() == NULL)
+                if (no->getDir() == NULL)
                 {
                     cout << endl
                          << " ID NAO ENCONTRADO" << endl;
@@ -145,4 +172,73 @@ void Arvore::buscaPorNome(No *no, string nomeProcurado)
         }
         cout << "\nO NOME " << nomeProcurado << " NAO EXISTE NA LISTA! \n";
     }
+}
+
+void Arvore::removePorId(int id)
+{
+    this->raiz = this->removePorIdAux(this->raiz, id);
+}
+
+No *Arvore::removePorIdAux(No *no, int id)
+{
+    if (no == NULL)
+    {
+        return NULL;
+    }
+    else if (id < no->getId())
+        no->setEsq( this->removePorIdAux(no->getEsq(), id));
+    else if (id > no->getId())
+        no->setDir( this->removePorIdAux(no->getDir(), id));
+    else //Encontrado o no a ser removido
+    {
+        if ((no->getEsq() == NULL) && (no->getDir() == NULL))
+        {
+            no = this->removeFolha(no);
+        }
+        else if ((no->getEsq() == NULL) || (no->getDir() == NULL))
+            no = this->removeNo1Filho(no);
+        else
+        {
+            //nó tem dois filhos
+            No *aux = menorSubArvDireita(no);
+
+            //troca as informacoes
+            int tmp = aux->getId();
+            aux->setId(no->getId());
+            no->setId(tmp);
+            // tmp->setId(C);
+
+            //recursao: para a sub. arv. direita
+            no->setDir( this->removePorIdAux(no->getDir(), id));
+        }
+        
+    }
+    
+    return no;
+}
+
+
+No *Arvore::removeFolha(No *no)
+{
+    delete no;
+    return NULL;
+}
+
+No *Arvore::removeNo1Filho(No *p)
+{
+    No *aux;
+    if (p->getEsq() == NULL)
+        aux = p->getDir();
+    else
+        aux = p->getEsq();
+    delete p;
+    return aux;
+}
+
+No *Arvore::menorSubArvDireita(No *p)
+{
+    No *aux = p->getDir();
+    while (aux->getEsq() != NULL)
+        aux = aux->getEsq();
+    return aux;
 }

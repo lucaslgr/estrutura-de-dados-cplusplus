@@ -6,6 +6,11 @@
 #include <ctime>
 #include "No.h"
 
+#include "ControleChaves/ListaInteiro.h"
+#include "ControleChaves/NoInteiro.h"
+#include "ControleNomes/ListaString.h"
+#include "ControleNomes/NoString.h"
+
 using namespace std;
 
 class Arvore
@@ -14,10 +19,14 @@ class Arvore
 private:
     No *raiz;
 
-    //VETOR PARA CONTROLE DAS CHAVES (OBJETIVO DE NÃO PERMITIR A UTILIZAÇÃO DE UMA CHAVE REPETIDA)
-    int *controle_Chaves;
-    //VETOR PARA CONTROLE DOS NOMES (OBJETIVO DE NÃO PERMITIR A UTILIZAÇÃO DE UMA CHAVE REPETIDA)
-    string *controle_Nomes;
+    ListaInteiro *lista_controleChaves;
+    ListaString *lista_controleNomes;
+
+    //Funções necessárias para realizar a operação de remove por ID
+    No *removePorIdAux(No *no, int id); //remove NO
+    No *removeFolha(No *no);            //caso 1
+    No *removeNo1Filho(No *p);          //caso 2
+    No *menorSubArvDireita(No *p);      // caso 3
 
 public:
     //CONSTRUTOR
@@ -40,4 +49,7 @@ public:
 
     //BUSCA EM ÁRVORE BINÁRIA por nome
     void buscaPorNome(No *no, string n);
+
+    //REMOVE UM CLIENTE POR ID
+    void removePorId(int id); //chama auxRemove
 };

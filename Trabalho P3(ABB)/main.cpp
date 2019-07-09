@@ -3,6 +3,7 @@
 
 using namespace std;
 
+//Função que exibe e controla o menu do programa
 void funcao_Menu(Arvore *a1)
 {
     int option = -1;
@@ -60,7 +61,7 @@ void funcao_Menu(Arvore *a1)
             int id;
             cout << "\nInforme o id correspondente ao cliente que deseja apagar: ";
             cin >> id;
-            //a1->apagarPorId(a1->getRaiz() ,id);
+            a1->removePorId(id);
             system("pause");
         }
         break;
