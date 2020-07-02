@@ -55,7 +55,3 @@ Lucas Guimarães
 https://lucaslgr.github.io/
 
 https://www.linkedin.com/in/lucas-guimar%C3%A3es-rocha-a30282132/
-
-## :male_detective: Referências
-
-https://www.udemy.com/cplusplus-intermediario/learn/v4/content
